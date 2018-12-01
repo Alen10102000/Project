@@ -18,8 +18,18 @@ function matrica(m, n) {
 }
 
 
-
 var matrix = matrica(10, 10);
+
+// var matrix = [
+//     [0, 0, 1, 0, 0],
+//     [1, 0, 2, 0, 0],
+//     [0, 1, 0, 0, 0],
+//     [0, 0, 1, 0, 0],
+//     [1, 1, 2, 0, 0],
+//     [1, 1, 0, 0, 0],
+//     [1, 1, 0, 0, 0]
+//  ];
+ 
 var side = 50;
 var grassArr = [];
 var xotakerArr = [];
@@ -53,7 +63,7 @@ function setup() {
         }
     }
 
-    frameRate(5);
+    frameRate(1);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
 }
@@ -109,8 +119,6 @@ function draw() {
 
     for (var i in mardArr) {
         mardArr[i].eat()
-        mardArr[i].eat1()
-        mardArr[i].eat2()
         mardArr[i].move()
         mardArr[i].mult()
         mardArr[i].die()

@@ -1,36 +1,4 @@
-class Grass {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.multiply = 0;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ]
-    }
-
-    chooseCell(character) {
-        var found = []
-        for (var i in this.directions) {
-            var x = this.directions[i][0]
-            var y = this.directions[i][1]
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i])
-                }
-            }
-
-        }
-        return found;
-
-    }
-
+class Grass extends KendaniEak {
     mult() {
         var empty = random(this.chooseCell(0))
         this.multiply++
@@ -81,8 +49,8 @@ class Xotaker {
         this.getNewDirections()
         var found = []
         for (var i in this.directions) {
-            var x = this.directions[i][0]
-            var y = this.directions[i][1]
+            var x = this.directions[i][0];
+            var y = this.directions[i][1];
             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
                 if (matrix[y][x] == character) {
                     found.push(this.directions[i])
@@ -124,15 +92,15 @@ class Xotaker {
         if (food) {
             var newX = food[0]
             var newY = food[1]
-            matrix[newY][newX] = 2
-            matrix[this.y][this.x] = 0
+
 
             for (var i in grassArr) {
                 if (grassArr[i].x == newX && grassArr[i].y == newY) {
                     grassArr.splice(i, 1)
                 }
             }
-
+            matrix[newY][newX] = 2
+            matrix[this.y][this.x] = 0
             this.x = newX
             this.y = newY
             this.energy += 2
@@ -232,15 +200,15 @@ class Gishatich {
         if (food) {
             var newX = food[0]
             var newY = food[1]
-            matrix[newY][newX] = 3
-            matrix[this.y][this.x] = 0
+
 
             for (var i in grassArr) {
                 if (grassArr[i].x == newX && grassArr[i].y == newY) {
                     grassArr.splice(i, 1)
                 }
             }
-
+            matrix[newY][newX] = 3
+            matrix[this.y][this.x] = 0
             this.x = newX
             this.y = newY
             this.energy += 2
@@ -334,65 +302,62 @@ class Mard {
     }
 
     eat() {
-        var food = random(this.chooseCell(1))
+        var food = random(this.chooseCell(getRandomInt(1, 3)))
+        if (food == this.chooseCell(1)) {
+            if (food) {
+                var newX = food[0]
+                var newY = food[1]
 
-        if (food) {
-            var newX = food[0]
-            var newY = food[1]
-            matrix[newY][newX] = 4
-            matrix[this.y][this.x] = 0
 
-            for (var i in grassArr) {
-                if (grassArr[i].x == newX && grassArr[i].y == newY) {
-                    grassArr.splice(i, 1)
+                for (var i in grassArr) {
+                    if (grassArr[i].x == newX && grassArr[i].y == newY) {
+                        grassArr.splice(i, 1)
+                    }
                 }
+                matrix[newY][newX] = 4
+                matrix[this.y][this.x] = 0
+                this.x = newX
+                this.y = newY
+                this.energy += 2
             }
-
-            this.x = newX
-            this.y = newY
-            this.energy += 2
         }
-    }
+        else if (food == this.chooseCell(2)) {
+            if (food) {
+                var newX = food[0]
+                var newY = food[1]
 
-    eat1() {
-        var food = random(this.chooseCell(2))
 
-        if (food) {
-            var newX = food[0]
-            var newY = food[1]
-            matrix[newY][newX] = 4
-            matrix[this.y][this.x] = 0
-
-            for (var i in grassArr) {
-                if (grassArr[i].x == newX && grassArr[i].y == newY) {
-                    grassArr.splice(i, 1)
+                for (var i in xotakerArr) {
+                    if (xotakerArr[i].x == newX && xotakerArr[i].y == newY) {
+                        xotakerArr.splice(i, 1)
+                    }
                 }
+                matrix[newY][newX] = 4
+                matrix[this.y][this.x] = 0
+                this.x = newX
+                this.y = newY
+                this.energy += 2
             }
-
-            this.x = newX
-            this.y = newY
-            this.energy += 2
         }
-    }
 
-    eat2() {
-        var food = random(this.chooseCell(3))
+        else if (food == this.chooseCell(3)) {
+            if (food) {
+                var newX = food[0]
+                var newY = food[1]
 
-        if (food) {
-            var newX = food[0]
-            var newY = food[1]
-            matrix[newY][newX] = 4
-            matrix[this.y][this.x] = 0
 
-            for (var i in grassArr) {
-                if (grassArr[i].x == newX && grassArr[i].y == newY) {
-                    grassArr.splice(i, 1)
+                for (var i in gishatichArr) {
+                    if (gishatichArr[i].x == newX && gishatichArr[i].y == newY) {
+                        gishatichArr.splice(i, 1)
+                    }
                 }
-            }
+                matrix[newY][newX] = 4
+                matrix[this.y][this.x] = 0
 
-            this.x = newX
-            this.y = newY
-            this.energy += 2
+                this.x = newX
+                this.y = newY
+                this.energy += 2
+            }
         }
     }
 
@@ -539,3 +504,6 @@ class Fermer {
     }
 }
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
