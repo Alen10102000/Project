@@ -79,9 +79,9 @@ class Gishatich {
             var newY = food[1]
 
 
-            for (var i in grassArr) {
-                if (grassArr[i].x == newX && grassArr[i].y == newY) {
-                    grassArr.splice(i, 1)
+            for (var i in xotakerArr) {
+                if (xotakerArr[i].x == newX && xotakerArr[i].y == newY) {
+                    xotakerArr.splice(i, 1)
                 }
             }
             matrix[newY][newX] = 3

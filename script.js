@@ -5,30 +5,30 @@ function getRandomInt(min, max) {
 
 
 
-function matrica(m, n) {
-    var matrix = [];
-    for (var i = 0; i < m; i++) {
-        matrix.push([]);
-        for (var k = 0; k < n; k++) {
-            matrix[i].push(getRandomInt(0, 4));
-        }
-    }
-    return matrix;
+// function matrica(m, n) {
+//     var matrix = [];
+//     for (var i = 0; i < m; i++) {
+//         matrix.push([]);
+//         for (var k = 0; k < n; k++) {
+//             matrix[i].push(getRandomInt(0, 5));
+//         }
+//     }
+//     return matrix;
 
-}
+// }
 
 
-var matrix = matrica(10, 10);
+// var matrix = matrica(10, 10);
 
-// var matrix = [
-//     [0, 0, 1, 0, 0],
-//     [1, 0, 2, 0, 0],
-//     [0, 1, 0, 0, 0],
-//     [0, 0, 1, 0, 0],
-//     [1, 1, 2, 0, 0],
-//     [1, 1, 0, 0, 0],
-//     [1, 1, 0, 0, 0]
-//  ];
+var matrix = [
+    [1, 1, 4, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 4, 1, 1, 1],
+    [1, 1, 4, 1, 1],
+    [4, 4, 1, 1, 1],
+    [4, 4, 1, 1, 1],
+    [4, 4, 1, 1, 1]
+ ];
  
 var side = 50;
 var grassArr = [];
@@ -119,9 +119,11 @@ function draw() {
 
     for (var i in mardArr) {
         mardArr[i].eat()
+        mardArr[i].eat1()
+        mardArr[i].eat2()
         mardArr[i].move()
         mardArr[i].mult()
-        mardArr[i].die()
+        // mardArr[i].die()
     }
 
     for (var i in fermerArr) {

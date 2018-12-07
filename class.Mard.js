@@ -72,64 +72,66 @@ class Mard {
     }
 
     eat() {
-        var food = random(this.chooseCell(getRandomInt(1, 3)))
-        if (food == this.chooseCell(1)) {
-            if (food) {
-                var newX = food[0]
-                var newY = food[1]
+        var food = random(this.chooseCell(1))
+        if (food) {
+            var newX = food[0]
+            var newY = food[1]
 
 
-                for (var i in grassArr) {
-                    if (grassArr[i].x == newX && grassArr[i].y == newY) {
-                        grassArr.splice(i, 1)
-                    }
+            for (var i in grassArr) {
+                if (grassArr[i].x == newX && grassArr[i].y == newY) {
+                    grassArr.splice(i, 1)
                 }
-                matrix[newY][newX] = 4
-                matrix[this.y][this.x] = 0
-                this.x = newX
-                this.y = newY
-                this.energy += 2
             }
-        }
-        else if (food == this.chooseCell(2)) {
-            if (food) {
-                var newX = food[0]
-                var newY = food[1]
-
-
-                for (var i in xotakerArr) {
-                    if (xotakerArr[i].x == newX && xotakerArr[i].y == newY) {
-                        xotakerArr.splice(i, 1)
-                    }
-                }
-                matrix[newY][newX] = 4
-                matrix[this.y][this.x] = 0
-                this.x = newX
-                this.y = newY
-                this.energy += 2
-            }
-        }
-
-        else if (food == this.chooseCell(3)) {
-            if (food) {
-                var newX = food[0]
-                var newY = food[1]
-
-
-                for (var i in gishatichArr) {
-                    if (gishatichArr[i].x == newX && gishatichArr[i].y == newY) {
-                        gishatichArr.splice(i, 1)
-                    }
-                }
-                matrix[newY][newX] = 4
-                matrix[this.y][this.x] = 0
-
-                this.x = newX
-                this.y = newY
-                this.energy += 2
-            }
+            matrix[newY][newX] = 4
+            matrix[this.y][this.x] = 0
+            this.x = newX
+            this.y = newY
+            this.energy += 2
         }
     }
+    eat1() {
+        var food = random(this.chooseCell(2))
+        if (food) {
+            var newX = food[0]
+            var newY = food[1]
+
+
+            for (var i in xotakerArr) {
+                if (xotakerArr[i].x == newX && xotakerArr[i].y == newY) {
+                    xotakerArr.splice(i, 1)
+                }
+            }
+            matrix[newY][newX] = 4
+            matrix[this.y][this.x] = 0
+            this.x = newX
+            this.y = newY
+            this.energy += 2
+        }
+
+    }
+    eat2() {
+        var food = random(this.chooseCell(3))
+        if (food) {
+            var newX = food[0]
+            var newY = food[1]
+
+
+            for (var i in gishatichArr) {
+                if (gishatichArr[i].x == newX && gishatichArr[i].y == newY) {
+                    gishatichArr.splice(i, 1)
+                }
+            }
+            matrix[newY][newX] = 4
+            matrix[this.y][this.x] = 0
+
+            this.x = newX
+            this.y = newY
+            this.energy += 2
+        }
+    }
+
+
 
     die() {
         if (this.energy <= 0) {
@@ -142,3 +144,4 @@ class Mard {
         }
     }
 }
+
