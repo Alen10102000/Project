@@ -10,7 +10,7 @@ function matrica(m, n) {
     for (var i = 0; i < m; i++) {
         matrix.push([]);
         for (var k = 0; k < n; k++) {
-            matrix[i].push(getRandomInt(0, 6));
+            matrix[i].push(getRandomInt(0, 4));
         }
     }
     return matrix;
