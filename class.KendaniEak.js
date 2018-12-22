@@ -1,4 +1,4 @@
-class KendaniEak {
+module.exports = class KendaniEak {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -30,4 +30,17 @@ class KendaniEak {
         return found;
 
     }
+}
+function random(items) {
+    var objResults = {}
+    for (var i = 0; i < 1000000; i++) {
+        var randomElement = items[Math.floor(Math.random() * items.length)]
+        if (objResults[randomElement]) {
+            objResults[randomElement]++
+        }
+        else {
+            objResults[randomElement] = 1
+        }
+    }
+    return objResults;
 }

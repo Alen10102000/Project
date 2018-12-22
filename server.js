@@ -1,16 +1,16 @@
 var express = require("express");
 var app = express();
 var server = require('http').Server(app);
-var io=require('socket.io')(server);
+var io = require('socket.io')(server);
 
 app.use(express.static("."));
 
-app.get("/", function(req, res){
-   res.redirect('index.html');
+app.get("/", function (req, res) {
+    res.redirect('index.html');
 });
 
 app.listen(3000);
-io.on('conection',function (socket){
+io.on('conection', function (socket) {
 });
 
 function getRandomInt(min, max) {
@@ -30,8 +30,7 @@ function matrica(m, n) {
 
 }
 
-
-var matrix = matrica(10, 10);
+matrix = matrica(10, 10);
 
 // var matrix = [
 //     [1, 1, 4, 1, 1],
@@ -42,19 +41,21 @@ var matrix = matrica(10, 10);
 //     [4, 4, 1, 1, 1],
 //     [4, 4, 1, 1, 1]
 //  ];
- 
-var side = 50;
-var grassArr = [];
-var xotakerArr = [];
-var gishatichArr = [];
-var mardArr = [];
-var fermerArr = [];
+
+grassArr = [];
+xotakerArr = [];
+gishatichArr = [];
+mardArr = [];
+fermerArr = [];
+
+Weather = "Summer";
+Weatherinit = 1;
 
 var Grass = require("./class.Grass.js");
-var Grass = require("./class.Xotaker.js");
-var Grass = require("./class.Gishatich.js");
-var Grass = require("./class.Mard.js");
-var Grass = require("./class.Fermer.js");
+var Xotaker = require("./class.Xotaker.js");
+var Gishatich = require("./class.Gishatich.js");
+var Mard = require("./class.Mard.js");
+var Fermer = require("./class.Fermer.js");
 
 for (var y = 0; y < matrix.length; y++) {
     for (var x = 0; x < matrix[y].length; x++) {
@@ -81,7 +82,7 @@ for (var y = 0; y < matrix.length; y++) {
     }
 }
 
-function drawserver(){
+function drawserver() {
     for (var i in grassArr) {
         grassArr[i].mult()
     }
@@ -115,27 +116,27 @@ function drawserver(){
         fermerArr[i].mult()
         fermerArr[i].die()
     }
-    io.sockets.emit("matrix",matrix);
+    io.sockets.emit("matrix", matrix);
 }
 
-function draw_wheater(){
+function draw_weather() {
     Weatherinit++;
-    if(Weatherinit==5){
-        Weatherinit==1;
+    if (Weatherinit == 5) {
+        Weatherinit == 1;
     }
-    if(Weatherinit==4){
-        Weatherinit=="Autumn";
+    if (Weatherinit == 4) {
+        Weatherinit == "Autumn";
     }
-    if(Weatherinit==3){
-        Weatherinit=="Winter";
+    if (Weatherinit == 3) {
+        Weatherinit == "Winter";
     }
-    if(Weatherinit==2){
-        Weatherinit=="Spring";
+    if (Weatherinit == 2) {
+        Weatherinit == "Spring";
     }
-    if(Weatherinit==1){
-        Weatherinit=="Summer";
+    if (Weatherinit == 1) {
+        Weatherinit == "Summer";
     }
-    io.sockets.emit("exanak",Weather);
+    io.sockets.emit("exanak", Weather);
 }
-setInterval(drawserver,3000);
-setInterval(draw_wheater,3000);      
+setInterval(drawserver, 3000);
+setInterval(draw_weather, 3000);      

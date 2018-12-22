@@ -1,4 +1,7 @@
-class Grass extends KendaniEak {
+var KendaniEak = require("./class.KendaniEak.js");
+var item = items[Math.floor(Math.random()*items.length)];
+
+module.exports = class Grass extends KendaniEak {
     mult() {
         var empty = random(this.chooseCell(0))
         this.multiply++
@@ -11,3 +14,4 @@ class Grass extends KendaniEak {
         }
     }
 }
+
